@@ -31,4 +31,15 @@ fn main() {
     let a: bool = true;
     let b: bool = false;
     println!("Booleans a: {}, b: {}", a, b);
+
+    let a: &str = "Hello, Rust!";
+    let b: String = String::from("Hello, Rust!");
+    println!("Strings a: {}, b: {}", a, b);
+
+    let a: [i32; 3] = [1, 2, 3];
+    let b: [f64; 2] = [3.14, 2.718];
+    println!("Arrays a: {:?}, b: {:?}", a, b);
+
+    let a: (i32, f64, char) = (42, 3.14, 'a');
+    println!("Tuple a: {:?}", a);
 }
