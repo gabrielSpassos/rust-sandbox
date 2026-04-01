@@ -13,17 +13,22 @@ rustup --version
 
 ## Usage
 
-1. Compile
+1. Start new project
+```bash
+cargo new $projectName
+```
+
+2. Compile
 ```bash
 cargo build
 ```
 
-2. Run 
+3. Run 
 ```bash
 cargo run
 ```
 
-3. Test
+4. Test
 ```bash
 cargo test
 ```
