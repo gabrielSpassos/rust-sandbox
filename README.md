@@ -1,5 +1,7 @@
 # Rust Sandbox
 
+> https://doc.rust-lang.org/rust-by-example/
+
 ## Install
 
 ```bash
