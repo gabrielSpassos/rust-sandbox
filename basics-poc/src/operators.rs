@@ -1,5 +1,5 @@
 pub fn operators() {
-    println!("Operators POC!");
+    println!("\nOperators POC!");
 
     println!("Addition [5 + 3]: {}", 5 + 3);
     println!("Subtraction [5 - 3]: {}", 5 - 3);

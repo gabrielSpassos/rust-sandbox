@@ -1,4 +1,5 @@
 mod operators;
+mod tuples;
 
 fn main() {
     println!("Primitives POC!");
@@ -46,4 +47,5 @@ fn main() {
     println!("Tuple a: {:?}", a);
 
     operators::operators();
+    tuples::tuples();
 }
