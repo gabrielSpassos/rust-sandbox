@@ -1,3 +1,5 @@
+mod operators;
+
 fn main() {
     println!("Primitives POC!");
 
@@ -42,4 +44,6 @@ fn main() {
 
     let a: (i32, f64, char) = (42, 3.14, 'a');
     println!("Tuple a: {:?}", a);
+
+    operators::operators();
 }
