@@ -1,18 +1,18 @@
 mod operators;
 mod tuples;
 mod arrays;
+mod structs;
 
 fn main() {
     primitives();
     operators::operators();
     tuples::tuples();
     arrays::arrays();
+    structs::structs();
 }
 
 fn primitives() {
-    println!("\nPrimitives POC!");
-
-        println!("Primitives POC!");
+    println!("Primitives POC!");
 
     let a: i8 = 127;
     let b: i16 = 32767;
