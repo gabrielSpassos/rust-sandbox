@@ -3,6 +3,7 @@ mod tuples;
 mod arrays;
 mod structs;
 mod enums;
+mod constants;
 
 fn main() {
     primitives();
@@ -11,6 +12,7 @@ fn main() {
     arrays::arrays();
     structs::structs();
     enums::enums();
+    constants::constants();
 }
 
 fn primitives() {
