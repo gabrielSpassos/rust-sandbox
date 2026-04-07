@@ -4,6 +4,7 @@ mod arrays;
 mod structs;
 mod enums;
 mod constants;
+mod variables;
 
 fn main() {
     primitives();
@@ -13,6 +14,7 @@ fn main() {
     structs::structs();
     enums::enums();
     constants::constants();
+    variables::variables();
 }
 
 fn primitives() {
