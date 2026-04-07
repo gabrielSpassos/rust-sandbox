@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 pub fn enums() {
     println!("\nEnums POC");
 
@@ -18,6 +20,24 @@ pub fn enums() {
     println!("Result add 5 and 10: {}", add.run(5, 10));
     let subtract = Operations::Subtract;
     println!("Result subtract 10 and 5: {}", subtract.run(10, 5));
+
+    use Stage::{Beginner, Advanced};
+    use Role::*;
+
+    // Equivalent to `Stage::Beginner`.
+    let stage = Beginner;
+    // Equivalent to `Role::Student`.
+    let role = Student;
+
+    match stage {
+        Beginner => println!("Beginners are starting their learning journey!"),
+        Advanced => println!("Advanced learners are mastering their subjects..."),
+    }
+
+    match role {
+        Student => println!("Students are acquiring knowledge!"),
+        Teacher => println!("Teachers are spreading knowledge!"),
+    }
 }
 
 enum WebEvent {
@@ -57,4 +77,14 @@ fn inspect(event: WebEvent) {
             println!("clicked at x={}, y={}.", x, y);
         },
     }
+}
+
+enum Stage {
+    Beginner,
+    Advanced,
+}
+
+enum Role {
+    Student,
+    Teacher,
 }
