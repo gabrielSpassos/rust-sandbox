@@ -15,6 +15,8 @@ pub fn variables() {
     mutable_variables();
     scope_variables();
     shadowing_variables();
+    declare_first_variables();
+    freezing_variables();
 }
 
 fn mutable_variables() {
@@ -59,4 +61,36 @@ fn shadowing_variables() {
 
     let shadowed_binding = 2;
     println!("shadowed in outer block: {}", shadowed_binding);
+}
+
+fn declare_first_variables() {
+    let a_binding;
+
+    {
+        let x = 2;
+        a_binding = x * x;
+    }
+
+    println!("a binding: {}", a_binding);
+
+    let another_binding;
+
+    // println!("another binding: {}", another_binding);
+
+    another_binding = 1;
+
+    println!("another binding: {}", another_binding);
+}
+
+fn freezing_variables() {
+    let mut _mutable_integer = 7i32;
+
+    {
+        let _mutable_integer = _mutable_integer;
+
+        // _mutable_integer = 50;
+    }
+
+    // Ok! `_mutable_integer` is not frozen in this scope
+    _mutable_integer = 3;
 }
