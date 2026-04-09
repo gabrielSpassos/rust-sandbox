@@ -7,6 +7,7 @@ mod constants;
 mod variables;
 mod casting;
 mod literals;
+mod inference;
 
 fn main() {
     primitives();
@@ -19,6 +20,7 @@ fn main() {
     variables::variables();
     casting::casting();
     literals::literals();
+    inference::inference();
 }
 
 fn primitives() {
