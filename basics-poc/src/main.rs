@@ -8,6 +8,7 @@ mod variables;
 mod casting;
 mod literals;
 mod inference;
+mod alias;
 
 fn main() {
     primitives();
@@ -21,6 +22,7 @@ fn main() {
     casting::casting();
     literals::literals();
     inference::inference();
+    alias::aliasing();
 }
 
 fn primitives() {
