@@ -6,6 +6,7 @@ mod enums;
 mod constants;
 mod variables;
 mod casting;
+mod literals;
 
 fn main() {
     primitives();
@@ -17,6 +18,7 @@ fn main() {
     constants::constants();
     variables::variables();
     casting::casting();
+    literals::literals();
 }
 
 fn primitives() {
