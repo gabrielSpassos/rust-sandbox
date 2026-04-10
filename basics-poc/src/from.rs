@@ -18,5 +18,5 @@ pub fn my_from() {
 
     let num = Number::from(30);
     let value = num.value;
-    println!("My number is {:?}, value is {}", num, value);
+    println!("from: My number is {:?}, value is {}", num, value);
 }
