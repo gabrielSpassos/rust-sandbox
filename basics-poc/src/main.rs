@@ -9,6 +9,7 @@ mod casting;
 mod literals;
 mod inference;
 mod alias;
+mod from;
 
 fn main() {
     primitives();
@@ -23,6 +24,7 @@ fn main() {
     literals::literals();
     inference::inference();
     alias::aliasing();
+    from::my_from();
 }
 
 fn primitives() {
