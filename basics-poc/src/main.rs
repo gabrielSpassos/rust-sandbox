@@ -12,6 +12,7 @@ mod alias;
 mod from;
 mod into;
 mod from_into;
+mod if_else;
 
 fn main() {
     primitives();
@@ -29,6 +30,7 @@ fn main() {
     from::my_from();
     into::my_into();
     from_into::my_from_into_interchange();
+    if_else::operators(5);
 }
 
 fn primitives() {
