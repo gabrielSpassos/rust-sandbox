@@ -13,7 +13,7 @@ mod from;
 mod into;
 mod from_into;
 mod if_else;
-mod infinite_loop;
+mod loops;
 
 fn main() {
     primitives();
@@ -32,9 +32,10 @@ fn main() {
     into::my_into();
     from_into::my_from_into_interchange();
     if_else::operators(5);
-    infinite_loop::infinite_loop();
-    infinite_loop::nested_loop();
-    infinite_loop::returning_loop();
+    loops::infinite_loop::infinite_loop();
+    loops::infinite_loop::nested_loop();
+    loops::infinite_loop::returning_loop();
+    loops::while_loop::while_loop();
 }
 
 fn primitives() {
