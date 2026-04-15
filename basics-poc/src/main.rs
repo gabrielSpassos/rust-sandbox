@@ -11,6 +11,7 @@ mod alias;
 mod convertions;
 mod if_else;
 mod loops;
+mod pattern_matcher;
 
 fn main() {
     primitives();
@@ -33,7 +34,7 @@ fn main() {
     loops::infinite_loop::nested_loop();
     loops::infinite_loop::returning_loop();
     loops::while_loop::while_loop();
-}
+    pattern_matcher::pattern_matcher();}
 
 fn primitives() {
     println!("Primitives POC!");
