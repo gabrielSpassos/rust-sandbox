@@ -1,28 +1,5 @@
-use axum::{
-    extract::State,
-    routing::{get},
-    Json, Router,
-};
-use serde::{Deserialize, Serialize};
-use std::{
-    net::SocketAddr,
-    sync::{Arc, Mutex},
-};
-
-#[derive(Clone)]
-struct AppState {
-    db: Arc<Mutex<Vec<String>>>,
-}
-
-#[derive(Deserialize)]
-struct CreateItem {
-    value: String,
-}
-
-#[derive(Serialize)]
-struct ItemsResponse {
-    items: Vec<String>,
-}
+use axum_http_server_poc::{create_app, AppState};
+use std::sync::{Arc, Mutex};
 
 #[tokio::main]
 async fn main() {
@@ -30,35 +7,13 @@ async fn main() {
         db: Arc::new(Mutex::new(vec![])),
     };
 
-    let app = Router::new()
-        .route("/items", get(get_items).post(create_item))
-        .with_state(state);
+    let app: axum::Router = create_app(state);
 
-    let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
-    println!("Server running on http://{}", addr);
-
-    axum::serve(tokio::net::TcpListener::bind(addr).await.unwrap(), app)
+    let listener = tokio::net::TcpListener::bind("127.0.0.1:3000")
         .await
         .unwrap();
-}
 
-async fn get_items(State(state): State<AppState>) -> Json<ItemsResponse> {
-    let db = state.db.lock().unwrap();
+    println!("Server running on http://127.0.0.1:3000");
 
-    Json(ItemsResponse {
-        items: db.clone(),
-    })
-}
-
-async fn create_item(
-    State(state): State<AppState>,
-    Json(payload): Json<CreateItem>,
-) -> Json<ItemsResponse> {
-    let mut db = state.db.lock().unwrap();
-
-    db.push(payload.value);
-
-    Json(ItemsResponse {
-        items: db.clone(),
-    })
+    axum::serve(listener, app).await.unwrap();
 }
