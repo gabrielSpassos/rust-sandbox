@@ -1,5 +1,6 @@
 use http_segment_tree::{create_routes, AppState};
 use std::sync::{Arc, Mutex};
+use tower_http::cors::CorsLayer;
 
 #[tokio::main]
 async fn main() {
@@ -7,7 +8,8 @@ async fn main() {
         tree: Arc::new(Mutex::new(None)),
     };
 
-    let app: axum::Router = create_routes(state);
+    let app: axum::Router = create_routes(state)
+        .layer(CorsLayer::permissive());
 
     let listener = tokio::net::TcpListener::bind("127.0.0.1:3000")
         .await

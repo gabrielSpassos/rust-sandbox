@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Segment Tree UI</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<h1>Segment Tree UI</h1>
+
+<div class="container">
+
+  <div class="left">
+
+    <div class="box">
+      <h3>Create Tree</h3>
+      <input id="inputArray" placeholder="e.g. 5,8,7,2,10,2,2" />
+      <button onclick="createTree()">Create</button>
+    </div>
+
+    <div class="box">
+      <h3>Update</h3>
+      <input id="updateIndex" placeholder="index" />
+      <input id="updateValue" placeholder="value" />
+      <button onclick="updateTree()">Update</button>
+    </div>
+
+    <div class="box">
+      <h3>Query</h3>
+      <input id="queryLeft" placeholder="left" />
+      <input id="queryRight" placeholder="right" />
+      <button onclick="queryTree()">Query</button>
+      <p id="queryResult"></p>
+    </div>
+
+  </div>
+
+  <div class="right">
+
+    <div class="box">
+      <h3>Current State</h3>
+      <button onclick="loadTree()">Refresh</button>
+
+      <p><strong>Array:</strong></p>
+      <div id="array"></div>
+
+      <p><strong>Tree:</strong></p>
+      <div id="tree" class="tree-container"></div>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
