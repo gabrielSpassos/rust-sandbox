@@ -30,3 +30,8 @@ curl -X POST http://localhost:3000/items \
   -H "Content-Type: application/json" \
   -d '{"value":"foo"}'
 ```
+
+* Test
+```
+cargo test
+```
