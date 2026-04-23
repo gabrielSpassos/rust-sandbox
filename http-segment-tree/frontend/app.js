@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "http://localhost:8000";
 
 async function createTree() {
   const input = document.getElementById("inputArray").value;
