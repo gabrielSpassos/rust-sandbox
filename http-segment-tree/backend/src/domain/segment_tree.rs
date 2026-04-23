@@ -126,6 +126,24 @@ mod tests {
     }
 
     #[test]
+    fn should_create_segment_tree_with_negative_value() {
+        let input = vec![0, 1, 3, 5, -2, 3 ];
+        let expected = vec![10, 4, 6, 1, 3, 3, 3, 0, 1, 0, 0, 5, -2];
+
+        let segment_tree = SegmentTree::new(input.clone());
+
+        let array = segment_tree.get_array();
+        assert!(!array.is_empty());
+        assert_eq!(&input, array);
+
+        let tree = segment_tree.get_tree();
+        assert!(!tree.is_empty());
+
+        let actual: Vec<i32> = tree.iter().take(13).cloned().collect();
+        assert_eq!(expected, actual);
+    }
+
+    #[test]
     fn should_query_segment_tree() {
         let input = vec![5, 8, 7, 2, 10, 2, 2];
 
