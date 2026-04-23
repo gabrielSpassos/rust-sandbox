@@ -1,5 +1,6 @@
 pub struct SegmentTree {
     n: usize,
+    max_index: usize,
     array: Vec<i32>,
     tree: Vec<i32>,
 }
@@ -9,6 +10,7 @@ impl SegmentTree {
         let n = input.len();
         let mut st = SegmentTree {
             n,
+            max_index: 0,
             array: input,
             tree: vec![0; 4 * n], // safer than 2*n for recursive tree
         };
@@ -41,7 +43,13 @@ impl SegmentTree {
         self.query_internal(0, 0, self.n - 1, left, right)
     }
 
+    pub fn logical_size(&self) -> usize {
+        self.max_index + 1
+    }
+
     fn build(&mut self, node: usize, start: usize, end: usize) {
+        self.max_index = self.max_index.max(node);
+
         if start == end {
             self.tree[node] = self.array[start];
         } else {
@@ -121,7 +129,10 @@ mod tests {
         let tree = segment_tree.get_tree();
         assert!(!tree.is_empty());
 
-        let actual: Vec<i32> = tree.iter().take(13).cloned().collect();
+        let logical_size = segment_tree.logical_size();
+        assert_eq!(13, logical_size);
+
+        let actual: Vec<i32> = tree.iter().take(logical_size).cloned().collect();
         assert_eq!(expected, actual);
     }
 
@@ -139,7 +150,10 @@ mod tests {
         let tree = segment_tree.get_tree();
         assert!(!tree.is_empty());
 
-        let actual: Vec<i32> = tree.iter().take(13).cloned().collect();
+        let logical_size = segment_tree.logical_size();
+        assert_eq!(13, logical_size);
+
+        let actual: Vec<i32> = tree.iter().take(logical_size).cloned().collect();
         assert_eq!(expected, actual);
     }
 
@@ -170,7 +184,10 @@ mod tests {
         let tree = segment_tree.get_tree();
         assert!(!tree.is_empty());
 
-        let actual: Vec<i32> = tree.iter().take(13).cloned().collect();
+        let logical_size = segment_tree.logical_size();
+        assert_eq!(13, logical_size);
+
+        let actual: Vec<i32> = tree.iter().take(logical_size).cloned().collect();
         assert_eq!(expected, actual);
     }
 }
