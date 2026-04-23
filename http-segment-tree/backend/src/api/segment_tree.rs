@@ -99,17 +99,14 @@ async fn query_tree(
 }
 
 fn build_tree_response(st: &SegmentTree) -> TreeResponse {
-    let raw_tree = st.get_tree();
-    let logical_size = 2 * st.get_array().len() - 1;
+    let array = st.get_array().clone();
 
-    let tree: Vec<i32> = raw_tree
+    let tree: Vec<i32> = st
+        .get_tree()
         .iter()
-        .take(logical_size)
+        .take(st.logical_size())
         .cloned()
         .collect();
 
-    TreeResponse {
-        array: st.get_array().clone(),
-        tree,
-    }
+    TreeResponse { array, tree }
 }

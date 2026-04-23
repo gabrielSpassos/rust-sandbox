@@ -76,34 +76,37 @@ function renderTree(tree) {
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.classList.add("tree-svg");
 
-  const nodeElements = [];
+  const nodes = [];
 
-  let level = 0;
   let index = 0;
+  let levelSize = 1;
 
   while (index < tree.length) {
-    const levelSize = Math.pow(2, level);
     const levelDiv = document.createElement("div");
     levelDiv.className = "tree-level";
 
     for (let i = 0; i < levelSize && index < tree.length; i++) {
+      const value = tree[index];
+
       const node = document.createElement("div");
       node.className = "node";
-      node.innerText = tree[index];
+      node.innerText = value;
 
       levelDiv.appendChild(node);
-      nodeElements.push(node);
+
+      // ✅ store original index
+      nodes.push({ index, el: node });
 
       index++;
     }
 
     container.appendChild(levelDiv);
-    level++;
+    levelSize *= 2;
   }
 
   container.appendChild(svg);
 
-  setTimeout(() => drawEdges(nodeElements, svg), 0);
+  setTimeout(() => drawEdges(nodes, svg), 0);
 }
 
 function drawEdges(nodes, svg) {
@@ -111,16 +114,20 @@ function drawEdges(nodes, svg) {
 
   const containerRect = svg.parentElement.getBoundingClientRect();
 
-  for (let i = 0; i < nodes.length; i++) {
-    const leftChild = 2 * i + 1;
-    const rightChild = 2 * i + 2;
+  // map index → element
+  const nodeMap = new Map();
+  nodes.forEach(n => nodeMap.set(n.index, n.el));
 
-    if (leftChild < nodes.length) {
-      drawLine(svg, nodes[i], nodes[leftChild], containerRect);
+  for (let { index, el } of nodes) {
+    const left = 2 * index + 1;
+    const right = 2 * index + 2;
+
+    if (nodeMap.has(left)) {
+      drawLine(svg, el, nodeMap.get(left), containerRect);
     }
 
-    if (rightChild < nodes.length) {
-      drawLine(svg, nodes[i], nodes[rightChild], containerRect);
+    if (nodeMap.has(right)) {
+      drawLine(svg, el, nodeMap.get(right), containerRect);
     }
   }
 }

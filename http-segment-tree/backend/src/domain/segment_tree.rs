@@ -138,7 +138,7 @@ mod tests {
 
     #[test]
     fn should_create_segment_tree_with_negative_value() {
-        let input = vec![0, 1, 3, 5, -2, 3 ];
+        let input = vec![0, 1, 3, 5, -2, 3];
         let expected = vec![10, 4, 6, 1, 3, 3, 3, 0, 1, 0, 0, 5, -2];
 
         let segment_tree = SegmentTree::new(input.clone());
