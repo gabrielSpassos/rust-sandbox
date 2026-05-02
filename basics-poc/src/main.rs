@@ -12,6 +12,7 @@ mod convertions;
 mod if_else;
 mod loops;
 mod pattern_matcher;
+mod option;
 
 fn main() {
     primitives();
@@ -36,6 +37,7 @@ fn main() {
     loops::while_loop::while_loop();
     loops::fors::loops();
     pattern_matcher::pattern_matcher();
+    option::operators();
 }
 
 fn primitives() {
