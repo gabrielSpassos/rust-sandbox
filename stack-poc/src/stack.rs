@@ -26,3 +26,28 @@ impl<T> Stack<T> {
         self.elements.len()
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::Stack;
+
+    #[test]
+    fn should_init_with_empty_elements() {
+        let stack: Stack<i32> = Stack::new();
+
+        assert!(stack.is_empty());
+        assert_eq!(stack.len(), 0);
+    }
+
+    #[test]
+    fn should_push_and_pop() {
+        let mut stack: Stack<i32> = Stack::new();
+
+        stack.push(1);
+        stack.push(2);
+
+        assert_eq!(stack.pop(), Some(2));
+        assert_eq!(stack.pop(), Some(1));
+        assert_eq!(stack.pop(), None);
+    }
+}
